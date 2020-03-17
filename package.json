@@ -1,0 +1,23 @@
+{
+  "name": "electronjsapp",
+  "version": "1.0.0",
+  "description": "first steps in ejs",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SrilalS/ElectronJSApp.git"
+  },
+  "author": "Srilal S. Siriwardhane",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/SrilalS/ElectronJSApp/issues"
+  },
+  "homepage": "https://github.com/SrilalS/ElectronJSApp#readme",
+  "dependencies": {
+    "custom-electron-titlebar": "^3.2.2-hotfix62",
+    "electron": "^8.1.1"
+  }
+}
