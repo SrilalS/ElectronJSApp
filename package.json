@@ -18,6 +18,7 @@
   "homepage": "https://github.com/SrilalS/ElectronJSApp#readme",
   "dependencies": {
     "custom-electron-titlebar": "^3.2.2-hotfix62",
-    "electron": "^8.1.1"
+    "electron": "^8.1.1",
+    "xel": "0.0.218"
   }
 }

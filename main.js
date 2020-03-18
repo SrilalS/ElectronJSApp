@@ -1,27 +1,28 @@
-const electron = require('electron');
-const url = require('url');
-const path = require('path');
+const { app, BrowserWindow } = require('electron')
 
+function createWindow () {
+  const win = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      nodeIntegration: true
+    }
+  })
+  win.loadFile('main.html');
+  win.setTitle('Electron Text')
+  win.setMenu(null);
+}
 
-const {app, BrowserWindow} = electron;
+app.whenReady().then(createWindow);
 
-let mainWindow;
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit()
+  }
+});
 
-
-app.on('ready', function(){
-    mainWindow = new BrowserWindow({
-        frame:false,
-        webPreferences : {
-            preload : path.join(__dirname,'preload.js'),
-            NodeIntergration : true
-        }
-    
-    });
-    mainWindow.loadURL(url.format({
-        pathname : path.join(__dirname,'main.html'),
-        protocol : 'file',
-        slashes : true
-    }))
-
-    
-})
+app.on('activate', () => {
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow()
+  }
+});

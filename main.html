@@ -1,69 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>MainWindow</title>
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="./css/materialize.css">
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="./js/materialize.js"></script>
-
-</head>
-
-<body>
-    <script>
-        const menu = new Menu();
-menu.append(new MenuItem({
-    label: 'Item 1',
-    submenu: [
-        {
-            label: 'Subitem 1',
-            click: () => console.log('Click on subitem 1')
-        },
-        {
-            type: 'separator'
-        }
-    ]
-}));
- 
-menu.append(new MenuItem({
-    label: 'Item 2',
-    submenu: [
-        {
-            label: 'Subitem checkbox',
-            type: 'checkbox',
-            checked: true
-        },
-        {
-            type: 'separator'
-        },
-        {
-            label: 'Subitem with submenu',
-            submenu: [
-                {
-                    label: 'Submenu &item 1',
-                    accelerator: 'Ctrl+T'
-                }
-            ]
-        }
-    ]
-}));
- 
-titlebar.updateMenu(menu);
-        const customTitlebar = require('custom-electron-titlebar');
-        let MyTitleBar = new customTitlebar.Titlebar({
-        backgroundColor: customTitlebar.Color.RED,
-        shadow : true,
-        drag : true,
-        minimizable : true,
-        maximizable : true,
-        closeable : true,
-        menu : menu
-    });
-
-    MyTitleBar.updateTitle('Our Code World Tutorials Rock !');
-    </script>
-</body>
-
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="node_modules/xel/themes/material.css">
+    <script src="node_modules/xel/xel.min.js"></script>
+    <title>ElectronJS</title>
+  </head>
+  <body>
+    <x-menubar>
+        <x-menuitem>
+          <x-label>File</x-label>
+      
+          <x-menu>
+            <x-menuitem>
+              <x-label>New</x-label>
+              <x-shortcut value="Control+N"></x-shortcut>
+            </x-menuitem>
+      
+            <x-menuitem>
+              <x-label>Open…</x-label>
+              <x-shortcut value="Control+O"></x-shortcut>
+            </x-menuitem>
+      
+            <hr>
+      
+            <x-menuitem>
+              <x-label>Save</x-label>
+              <x-shortcut value="Control+S"></x-shortcut>
+            </x-menuitem>
+      
+            <x-menuitem>
+              <x-label>Save as…</x-label>
+              <x-shortcut value="Control+Shift+S"></x-shortcut>
+            </x-menuitem>
+          </x-menu>
+        </x-menuitem>
+      
+        <x-menuitem>
+          <x-label>Edit</x-label>
+      
+          <x-menu>
+            <x-menuitem>
+              <x-icon name="undo"></x-icon>
+              <x-label>Undo</x-label>
+              <x-shortcut value="Control+Z"></x-shortcut>
+            </x-menuitem>
+      
+            <x-menuitem disabled>
+              <x-icon name="redo"></x-icon>
+              <x-label>Redo</x-label>
+              <x-shortcut value="Control+Shift+Z"></x-shortcut>
+            </x-menuitem>
+      
+            <hr>
+      
+            <x-menuitem>
+              <x-icon name="content-cut"></x-icon>
+              <x-label>Cut</x-label>
+              <x-shortcut value="Control+X"></x-shortcut>
+            </x-menuitem>
+      
+            <x-menuitem>
+              <x-icon name="content-copy"></x-icon>
+              <x-label>Copy</x-label>
+              <x-shortcut value="Control+C"></x-shortcut>
+            </x-menuitem>
+      
+            <x-menuitem>
+              <x-icon name="content-paste"></x-icon>
+              <x-label>Paste</x-label>
+              <x-shortcut value="Control+V"></x-shortcut>
+            </x-menuitem>
+          </x-menu>
+        </x-menuitem>
+      
+        <x-menuitem>
+          <x-label>View</x-label>
+      
+          <x-menu>
+            <x-menuitem togglable toggled>
+              <x-label>Show ruler</x-label>
+            </x-menuitem>
+      
+            <x-menuitem togglable>
+              <x-label>Show spelling suggestions</x-label>
+            </x-menuitem>
+          </x-menu>
+        </x-menuitem>
+      
+        <x-menuitem>
+          <x-label>Help</x-label>
+      
+          <x-menu>
+            <x-menuitem>
+              <x-icon name="help"></x-icon>
+              <x-label>Documentation</x-label>
+            </x-menuitem>
+          </x-menu>
+        </x-menuitem>
+      </x-menubar>
+  </body>
 </html>
