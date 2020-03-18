@@ -1,103 +1,164 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="node_modules/xel/themes/material.css">
     <script src="node_modules/xel/xel.min.js"></script>
     <title>ElectronJS</title>
-  </head>
-  <body>
-    <x-menubar>
-        <x-menuitem>
-          <x-label>File</x-label>
-      
-          <x-menu>
+    <script>
+        function closer(){
+            const remote = require('electron').remote
+            var window = remote.BrowserWindow.getFocusedWindow();
+            window.close();
+        }
+
+        function mini(){
+            const remote = require('electron').remote
+            var window = remote.BrowserWindow.getFocusedWindow();
+            window.minimize();
+        }
+
+        function maxi(){
+            const remote = require('electron').remote
+            var window = remote.BrowserWindow.getFocusedWindow();
+            window.isMaximized() ? window.unmaximize() : window.maximize();
+        }
+
+    </script>
+</head>
+
+<body>
+
+
+
+    <div class="title-bar">
+
+
+        <x-menubar>
             <x-menuitem>
-              <x-label>New</x-label>
-              <x-shortcut value="Control+N"></x-shortcut>
+                <x-label>File</x-label>
+
+                <x-menu>
+                    <x-menuitem>
+                        <x-label>New</x-label>
+                        <x-shortcut value="Control+N"></x-shortcut>
+                    </x-menuitem>
+
+                    <x-menuitem>
+                        <x-label>Open…</x-label>
+                        <x-shortcut value="Control+O"></x-shortcut>
+                    </x-menuitem>
+
+                    <x-menuitem>
+                        <x-label>Save</x-label>
+                        <x-shortcut value="Control+S"></x-shortcut>
+                    </x-menuitem>
+
+                    <x-menuitem>
+                        <x-label>Save as…</x-label>
+                        <x-shortcut value="Control+Shift+S"></x-shortcut>
+                    </x-menuitem>
+                </x-menu>
             </x-menuitem>
-      
+
             <x-menuitem>
-              <x-label>Open…</x-label>
-              <x-shortcut value="Control+O"></x-shortcut>
+                <x-label>Edit</x-label>
+
+                <x-menu>
+                    <x-menuitem>
+                        <x-icon name="undo"></x-icon>
+                        <x-label>Undo</x-label>
+                        <x-shortcut value="Control+Z"></x-shortcut>
+                    </x-menuitem>
+
+                    <x-menuitem>
+                        <x-icon name="redo"></x-icon>
+                        <x-label>Redo</x-label>
+                        <x-shortcut value="Control+Shift+Z"></x-shortcut>
+                    </x-menuitem>
+
+
+                    <x-menuitem>
+                        <x-icon name="content-cut"></x-icon>
+                        <x-label>Cut</x-label>
+                        <x-shortcut value="Control+X"></x-shortcut>
+                    </x-menuitem>
+
+                    <x-menuitem>
+                        <x-icon name="content-copy"></x-icon>
+                        <x-label>Copy</x-label>
+                        <x-shortcut value="Control+C"></x-shortcut>
+                    </x-menuitem>
+
+                    <x-menuitem>
+                        <x-icon name="content-paste"></x-icon>
+                        <x-label>Paste</x-label>
+                        <x-shortcut value="Control+V"></x-shortcut>
+                    </x-menuitem>
+                </x-menu>
             </x-menuitem>
-      
-            <hr>
-      
+
+
             <x-menuitem>
-              <x-label>Save</x-label>
-              <x-shortcut value="Control+S"></x-shortcut>
+                <x-label>View</x-label>
+
+                <x-menu>
+                    <x-menuitem togglable toggled>
+                        <x-label>Show ruler</x-label>
+                    </x-menuitem>
+
+                    <x-menuitem togglable>
+                        <x-label>Show spelling suggestions</x-label>
+                    </x-menuitem>
+                </x-menu>
             </x-menuitem>
-      
+
             <x-menuitem>
-              <x-label>Save as…</x-label>
-              <x-shortcut value="Control+Shift+S"></x-shortcut>
+                <x-label>Help</x-label>
+
+                <x-menu>
+                    <x-menuitem>
+                        <x-icon name="help"></x-icon>
+                        <x-label>Documentation</x-label>
+                    </x-menuitem>
+                </x-menu>
             </x-menuitem>
-          </x-menu>
-        </x-menuitem>
-      
-        <x-menuitem>
-          <x-label>Edit</x-label>
-      
-          <x-menu>
-            <x-menuitem>
-              <x-icon name="undo"></x-icon>
-              <x-label>Undo</x-label>
-              <x-shortcut value="Control+Z"></x-shortcut>
-            </x-menuitem>
-      
-            <x-menuitem disabled>
-              <x-icon name="redo"></x-icon>
-              <x-label>Redo</x-label>
-              <x-shortcut value="Control+Shift+Z"></x-shortcut>
-            </x-menuitem>
-      
-            <hr>
-      
-            <x-menuitem>
-              <x-icon name="content-cut"></x-icon>
-              <x-label>Cut</x-label>
-              <x-shortcut value="Control+X"></x-shortcut>
-            </x-menuitem>
-      
-            <x-menuitem>
-              <x-icon name="content-copy"></x-icon>
-              <x-label>Copy</x-label>
-              <x-shortcut value="Control+C"></x-shortcut>
-            </x-menuitem>
-      
-            <x-menuitem>
-              <x-icon name="content-paste"></x-icon>
-              <x-label>Paste</x-label>
-              <x-shortcut value="Control+V"></x-shortcut>
-            </x-menuitem>
-          </x-menu>
-        </x-menuitem>
-      
-        <x-menuitem>
-          <x-label>View</x-label>
-      
-          <x-menu>
-            <x-menuitem togglable toggled>
-              <x-label>Show ruler</x-label>
-            </x-menuitem>
-      
-            <x-menuitem togglable>
-              <x-label>Show spelling suggestions</x-label>
-            </x-menuitem>
-          </x-menu>
-        </x-menuitem>
-      
-        <x-menuitem>
-          <x-label>Help</x-label>
-      
-          <x-menu>
-            <x-menuitem>
-              <x-icon name="help"></x-icon>
-              <x-label>Documentation</x-label>
-            </x-menuitem>
-          </x-menu>
-        </x-menuitem>
-      </x-menubar>
-  </body>
+
+
+
+
+            <div class="title-bar-text" style="color: white; text-align: center;">
+                ElectronJS NotePad
+            </div>
+
+            <div class="btn-mini" onclick="mini()">
+                <img src="./css/SysIcons/Icon awesome-window-minimize.svg" style="
+                    margin-top: 20px; 
+                    width: 12px;
+                    color: white;">
+                </img>
+            </div>
+
+            <div class="btn-maxi" onClick="maxi()">
+                <img src="./css/SysIcons/Icon awesome-window-maximize.svg" style="
+                    margin-top: 12px;
+                    height: 10px;
+                    color: white;">
+                </img>
+            </div>
+
+            <div class="btn-close" id="close" onclick="closer()">
+                <img src="./css/SysIcons/Icon ionic-md-close.svg" style="
+                        margin-top: 12px;
+                        margin-left: 17px; 
+                        height: 10px;
+                        color: white;">
+                </img>
+            </div>
+        </x-menubar>
+
+        <x-textarea style="height: 93.5vh;"></x-textarea>
+</body>
+
 </html>
